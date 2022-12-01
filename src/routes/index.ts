@@ -3,8 +3,10 @@ import { NextFunction, Response, Router } from 'express';
 
 import { OK } from 'http-status';
 import express from 'express';
-const  webRouters = require('./webRoutes/index') 
-const boRouters = require('./boRoutes/index')
+const postRouter = require('./posts.route')
+const commentRouter = require('./comment.route')
+const reactionRouter = require('./reaction.route')
+
 const multer = require('multer');
 
 const diskStorage = multer.diskStorage({
@@ -40,8 +42,11 @@ router.get('/status', (_, res : Response, next:NextFunction) => {
   res.status(OK).json({status : "ok"})
   return next();
 });
-router.use('/web',webRouters)
-router.use('/bo',boRouters)
+router.use('/post',postRouter)
+router.use('/comment',commentRouter)
+router.use('/reaction',reactionRouter)
+// router.use('/web',webRouters)
+// router.use('/bo',boRouters)
 
 
 module.exports = router;
