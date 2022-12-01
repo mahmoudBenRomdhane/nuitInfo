@@ -13,7 +13,7 @@ mongoose.connection.on('error', (err: any) => {
 });
 
 exports.connect = () => {
-  mongoose.connect(mongo, {
+  mongoose.connect("mongodb+srv://nuitinfo:nuit1234@cluster0.7l8yo.mongodb.net/?retryWrites=true&w=majority", {
     keepAlive: 1,
     useNewUrlParser: true
   });
